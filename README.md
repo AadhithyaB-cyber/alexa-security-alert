@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Login Watch – Alexa Security Alert Skill
 
-## Getting Started
+A simulated Alexa+ experience that detects brute force login attempts. Paste authentication logs, click "Alexa, check my logs", and the app flags any source IP with more than 3 failed logins, shows a red alert, and speaks a warning.
 
-First, run the development server:
+Live demo: https://alexa-security-alert.vercel.app/
+
+## Run locally
+
+Requires Node.js 18 or higher.
 
 ```bash
+git clone https://github.com/AadhithyaB-cyber/alexa-security-alert.git
+cd alexa-security-alert
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in Chrome or Edge and click "Alexa, check my logs". Sample logs are preloaded.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How it works
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `app/page.js` parses the pasted logs in the browser and counts failed logins per source IP.
+- Any IP over 3 failures is flagged as suspicious.
+- The browser's Web Speech API (speech synthesis) simulates Alexa's spoken alert.
 
-## Learn More
+## Built with
 
-To learn more about Next.js, take a look at the following resources:
+Next.js, React, Vercel, Web Speech API
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
